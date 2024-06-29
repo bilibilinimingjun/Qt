@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>style.qss</file>
+        <file>icons/jiantou.png</file>
+        <file>icons/xiala.png</file>
+    </qresource>
+</RCC>

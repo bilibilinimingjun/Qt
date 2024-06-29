@@ -1,0 +1,7 @@
+QRadioButton::indicator:unchecked { image: url(:/icons/un_rb2.png) }
+QRadioButton::indicator:checked { image: url(:/icons/rb2.png) }
+QRadioButton { font-size: 30px; color: #99404040; background-color: #aaDDDDDD }
+QRadioButton::indicator { width: 50px; height: 50px }
+QCheckBox::indicator:unchecked { image: url(:/icons/CB_un1.png) }
+QCheckBox::indicator:indeterminate { image: url(:/icons/CB_h.png) }
+QCheckBox::indicator:checked { image: url(:/icons/CB.png) }

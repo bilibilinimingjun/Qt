@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/radiobutton_clicked_green.png</file>
+        <file>icons/radiobutton_unclicked.png</file>
+        <file>style.qss</file>
+        <file>icons/rb2.png</file>
+        <file>icons/un_rb2.png</file>
+        <file>icons/CB.png</file>
+        <file>icons/CB_h.png</file>
+        <file>icons/CB_un1.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+2024_06_25_23_53_29 182--Debug     (0, 1, 2) 
+
+2024_06_25_23_53_29 182--Debug     断开连接
+2024_06_25_23_53_29 183--Debug     连接成功
+2024_06_25_23_53_34 733--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_25_23_53_34 737--Debug     ~SaveLog

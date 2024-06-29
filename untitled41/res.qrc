@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/xiala.png</file>
+        <file>icons/jiantou.png</file>
+        <file>icons/sousuo_un1.png</file>
+        <file>icons/20240618114157.png</file>
+    </qresource>
+</RCC>

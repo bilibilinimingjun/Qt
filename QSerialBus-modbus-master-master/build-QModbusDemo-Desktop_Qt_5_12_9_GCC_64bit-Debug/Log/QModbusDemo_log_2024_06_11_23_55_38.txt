@@ -1,0 +1,16 @@
+2024_06_11_23_55_38 856--Debug     断开连接
+2024_06_11_23_55_38 877--Debug     连接成功
+2024_06_11_23_55_38 877--Debug     连接成功
+2024_06_11_23_55_42 904--Debug     断开连接
+2024_06_11_23_55_42 926--Debug     连接成功
+2024_06_11_23_55_43 986--Debug     "Write response error: Response timeout. (code: 0x5)"
+2024_06_11_23_55_52 135--Debug     断开连接
+2024_06_11_23_55_52 157--Debug     连接成功
+2024_06_11_23_55_53 117--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_11_23_56_04 685--Debug     断开连接
+2024_06_11_23_56_04 707--Debug     连接成功
+2024_06_11_23_56_05 665--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_11_23_56_57 612--Debug     断开连接
+2024_06_11_23_56_57 635--Debug     连接成功
+2024_06_11_23_56_58 594--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_12_00_00_14 795--Debug     ~SaveLog

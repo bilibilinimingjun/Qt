@@ -1,0 +1,71 @@
+2024_06_26_12_37_54 573--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_37_54 573--Debug     断开连接
+2024_06_26_12_37_54 574--Debug     连接成功
+2024_06_26_12_37_57 084--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_37_57 084--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_37_57 084--Debug     断开连接
+2024_06_26_12_37_57 085--Debug     连接成功
+2024_06_26_12_37_57 825--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_37_57 826--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_37_57 826--Debug     断开连接
+2024_06_26_12_37_57 826--Debug     连接成功
+2024_06_26_12_38_06 211--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_06 211--Debug     断开连接
+2024_06_26_12_38_06 211--Debug     连接失败
+2024_06_26_12_38_08 018--Debug     断开连接
+2024_06_26_12_38_08 019--Debug     连接成功
+2024_06_26_12_38_08 019--Debug     连接成功
+2024_06_26_12_38_10 324--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_10 325--Debug     断开连接
+2024_06_26_12_38_10 326--Debug     连接成功
+2024_06_26_12_38_11 850--Debug     "Write response error: Response timeout. (code: 0x5)"
+2024_06_26_12_38_12 205--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_12 205--Debug     断开连接
+2024_06_26_12_38_12 205--Debug     连接成功
+2024_06_26_12_38_13 623--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_13 624--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_13 624--Debug     断开连接
+2024_06_26_12_38_13 625--Debug     连接成功
+2024_06_26_12_38_15 288--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_15 288--Debug     断开连接
+2024_06_26_12_38_15 288--Debug     连接失败
+2024_06_26_12_38_15 746--Debug     断开连接
+2024_06_26_12_38_15 746--Debug     连接成功
+2024_06_26_12_38_15 747--Debug     连接成功
+2024_06_26_12_38_16 789--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_16 789--Debug     断开连接
+2024_06_26_12_38_16 789--Debug     连接成功
+2024_06_26_12_38_17 418--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_17 418--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_17 418--Debug     断开连接
+2024_06_26_12_38_17 419--Debug     连接成功
+2024_06_26_12_38_17 589--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_17 590--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_17 590--Debug     断开连接
+2024_06_26_12_38_17 590--Debug     连接成功
+2024_06_26_12_38_17 754--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_17 755--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_17 755--Debug     断开连接
+2024_06_26_12_38_17 755--Debug     连接成功
+2024_06_26_12_38_17 907--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_17 907--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_17 907--Debug     断开连接
+2024_06_26_12_38_17 908--Debug     连接成功
+2024_06_26_12_38_18 069--Debug     (0, 1, 2, 3) 
+
+2024_06_26_12_38_18 070--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_18 070--Debug     断开连接
+2024_06_26_12_38_18 070--Debug     连接成功
+2024_06_26_12_38_19 253--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_38_19 259--Debug     ~SaveLog

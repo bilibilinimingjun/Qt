@@ -1,0 +1,10 @@
+2024_06_26_12_09_20 253--Debug     断开连接
+2024_06_26_12_09_20 253--Debug     连接成功
+2024_06_26_12_09_20 253--Debug     连接成功
+2024_06_26_12_09_23 818--Debug     断开连接
+2024_06_26_12_09_23 818--Debug     连接成功
+2024_06_26_12_09_24 561--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_26_12_09_24 561--Debug     断开连接
+2024_06_26_12_09_24 561--Debug     连接成功
+2024_06_26_12_09_25 517--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_26_12_09_48 428--Debug     ~SaveLog

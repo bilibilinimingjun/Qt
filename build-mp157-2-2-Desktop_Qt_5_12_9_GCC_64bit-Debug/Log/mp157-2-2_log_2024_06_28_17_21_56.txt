@@ -1,0 +1,12 @@
+2024_06_28_17_21_56 969--Debug     断开连接
+2024_06_28_17_21_56 969--Debug     连接成功
+2024_06_28_17_21_58 713--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_21_58 713--Debug     断开连接
+2024_06_28_17_21_58 713--Debug     连接失败
+2024_06_28_17_22_00 316--Debug     断开连接
+2024_06_28_17_22_00 317--Debug     连接成功
+2024_06_28_17_22_00 317--Debug     连接成功
+2024_06_28_17_22_01 417--Debug     断开连接
+2024_06_28_17_22_01 417--Debug     连接成功
+2024_06_28_17_22_02 811--Debug     "Write response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_22_02 816--Debug     ~SaveLog

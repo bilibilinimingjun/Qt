@@ -1,0 +1,15 @@
+2024_06_21_22_01_05 442--Debug     断开连接
+2024_06_21_22_01_05 444--Debug     (RTU server) QSerialPort error: QSerialPort::UnsupportedOperationError "Invalid baud rate value"
+2024_06_21_22_01_05 444--Debug     modbus Error: "Device operation is not supported error."
+2024_06_21_22_01_05 444--Debug     modbus Error: "Invalid baud rate value"
+2024_06_21_22_01_05 444--Debug     连接失败
+2024_06_21_22_01_07 094--Debug     QtWarningMsg: (Client) Device is not connected
+2024_06_21_22_01_07 094--Debug     modbus Error: "Device not connected."
+2024_06_21_22_01_07 094--Debug     "Write error: Device not connected."
+2024_06_21_22_01_08 036--Debug     断开连接
+2024_06_21_22_01_08 036--Debug     连接成功
+2024_06_21_22_01_08 036--Debug     连接成功
+2024_06_21_22_01_08 988--Debug     断开连接
+2024_06_21_22_01_08 989--Debug     连接成功
+2024_06_21_22_01_09 947--Debug     "Write response error: Response timeout. (code: 0x5)"
+2024_06_21_22_02_28 684--Debug     ~SaveLog

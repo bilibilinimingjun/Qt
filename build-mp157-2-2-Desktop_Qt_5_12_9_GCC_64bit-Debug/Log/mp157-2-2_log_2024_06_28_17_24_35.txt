@@ -1,0 +1,40 @@
+2024_06_28_17_24_35 038--Debug     断开连接
+2024_06_28_17_24_35 039--Debug     连接成功
+2024_06_28_17_24_35 039--Debug     连接成功
+2024_06_28_17_24_35 848--Debug     断开连接
+2024_06_28_17_24_35 848--Debug     连接成功
+2024_06_28_17_24_35 992--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_35 992--Debug     断开连接
+2024_06_28_17_24_35 993--Debug     连接成功
+2024_06_28_17_24_36 166--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_36 167--Debug     断开连接
+2024_06_28_17_24_36 167--Debug     连接成功
+2024_06_28_17_24_36 470--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_36 470--Debug     断开连接
+2024_06_28_17_24_36 470--Debug     连接成功
+2024_06_28_17_24_36 649--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_36 649--Debug     断开连接
+2024_06_28_17_24_36 650--Debug     连接成功
+2024_06_28_17_24_37 704--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_28_17_24_40 533--Debug     断开连接
+2024_06_28_17_24_40 534--Debug     连接成功
+2024_06_28_17_24_40 758--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_40 758--Debug     断开连接
+2024_06_28_17_24_40 759--Debug     连接成功
+2024_06_28_17_24_40 912--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_40 912--Debug     断开连接
+2024_06_28_17_24_40 913--Debug     连接成功
+2024_06_28_17_24_41 064--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_41 064--Debug     断开连接
+2024_06_28_17_24_41 065--Debug     连接成功
+2024_06_28_17_24_41 215--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_41 215--Debug     断开连接
+2024_06_28_17_24_41 216--Debug     连接成功
+2024_06_28_17_24_41 367--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_41 367--Debug     断开连接
+2024_06_28_17_24_41 368--Debug     连接成功
+2024_06_28_17_24_41 513--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_17_24_41 513--Debug     断开连接
+2024_06_28_17_24_41 514--Debug     连接成功
+2024_06_28_17_24_42 469--Debug     "Read response error: Response timeout. (code: 0x5)"
+2024_06_28_17_24_44 669--Debug     ~SaveLog

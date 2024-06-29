@@ -1,0 +1,6 @@
+2024_06_28_15_24_31 207--Debug     断开连接
+2024_06_28_15_24_31 208--Debug     连接成功
+2024_06_28_15_24_32 245--Debug     "Read response error: Reply aborted due to connection closure. (code: 0x7)"
+2024_06_28_15_24_32 245--Debug     断开连接
+2024_06_28_15_24_32 245--Debug     连接失败
+2024_06_28_15_24_33 662--Debug     ~SaveLog
