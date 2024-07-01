@@ -17,11 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    modbusdata.cpp \
     savelog.cpp \
     widget.cpp
 
 HEADERS += \
+    modbusdata.h \
     savelog.h \
+    thread.h \
     widget.h
 
 FORMS += \

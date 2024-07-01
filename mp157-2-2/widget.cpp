@@ -11,18 +11,28 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
     , id(0x01)
 {
-    //QWidget::update();
+    QWidget::update();
     ui->setupUi(this);
     this->setLayout(ui->horizontalLayout);  //设置页面随窗口大小变化
     QWidget::update();
-    modbusDevice = nullptr;
+    m_modbus.moveToThread(&m_thread); //加入到子线程
+    m_thread.start(); //开启子线程
+
+
+    m_modbus.modbusDevice = nullptr;
+    m_modbus.InitModbus();
+
+    connect(&m_modbus,&ModbusData::onModbusRawData,this,&Widget::onModbusRawData);
     freshSerialPortCombox();        //寻找可用串口
-    InitModbus();                   //初始化modbus
+
+
 }
 
 Widget::~Widget()
 {
     delete ui;
+    m_thread.exit();
+    m_thread.wait();
 }
 
 //寻找可用串口
@@ -41,7 +51,8 @@ void Widget::freshSerialPortCombox()
 }
 
 //初始modbus
-void Widget::Widget::InitModbus()
+/*
+void Widget::InitModbus()
 {
     //获取modbus raw 数据帧
     connect(SaveLog::Instance(),&SaveLog::sigModbusData,this,&Widget::onModbusRawData);
@@ -58,7 +69,7 @@ void Widget::Widget::InitModbus()
     });
 
     // connect(modbusDevice, &QModbusClient::stateChanged, this, &Widget::onStateChanged);
-}
+}*/
 
 //获取modbus数据帧 0发送的数据 1接受的数据
 void Widget::onModbusRawData(QString data, int type)
@@ -117,41 +128,45 @@ void Widget::on_listWidget_currentRowChanged(int currentRow)
 //连接串口
 void Widget::on_pushButton_connect_clicked()
 {
-    if (!modbusDevice)
+
+    if (!m_modbus.modbusDevice)
+        //qDebug() << m_modbus.modbusDevice;
+        //qDebug() << m_modbus.modbusDevice->state();
+        //qDebug() << "no modbus devices";
         return;
 
     switch (ui->comboBox_baudRate->currentIndex()) {
-    case 0: baud = QSerialPort::Baud4800; break;
-    case 1: baud = QSerialPort::Baud9600; break;
-    case 2: baud = QSerialPort::Baud38400; break;
-    case 3: baud = QSerialPort::Baud57600; break;
-    case 4: baud = QSerialPort::Baud115200; break;
-    default: baud = QSerialPort::Baud115200; break;
+    case 0: m_modbus.baud = QSerialPort::Baud4800; break;
+    case 1: m_modbus.baud = QSerialPort::Baud9600; break;
+    case 2: m_modbus.baud = QSerialPort::Baud38400; break;
+    case 3: m_modbus.baud = QSerialPort::Baud57600; break;
+    case 4: m_modbus.baud = QSerialPort::Baud115200; break;
+    default: m_modbus.baud = QSerialPort::Baud115200; break;
     }
 
     switch (ui->comboBox_dataBit->currentIndex()) {
-    case 0: dataBit = QSerialPort::Data5; break;
-    case 1: dataBit = QSerialPort::Data6; break;
-    case 2: dataBit = QSerialPort::Data7; break;
-    case 3: dataBit = QSerialPort::Data8; break;
-    default: dataBit = QSerialPort::Data8; break;
+    case 0: m_modbus.dataBit = QSerialPort::Data5; break;
+    case 1: m_modbus.dataBit = QSerialPort::Data6; break;
+    case 2: m_modbus.dataBit = QSerialPort::Data7; break;
+    case 3: m_modbus.dataBit = QSerialPort::Data8; break;
+    default: m_modbus.dataBit = QSerialPort::Data8; break;
     }
 
 
     switch (ui->comboBox_parity->currentIndex()) {
-    case 0: parity = QSerialPort::NoParity; break;
-    case 1: parity = QSerialPort::EvenParity; break;
-    case 2: parity = QSerialPort::OddParity; break;
-    case 3: parity = QSerialPort::SpaceParity; break;
-    case 4: parity = QSerialPort::MarkParity; break;
-    default: parity = QSerialPort::NoParity; break;
+    case 0: m_modbus.parity = QSerialPort::NoParity; break;
+    case 1: m_modbus.parity = QSerialPort::EvenParity; break;
+    case 2: m_modbus.parity = QSerialPort::OddParity; break;
+    case 3: m_modbus.parity = QSerialPort::SpaceParity; break;
+    case 4: m_modbus.parity = QSerialPort::MarkParity; break;
+    default: m_modbus.parity = QSerialPort::NoParity; break;
     }
 
     switch (ui->comboBox_stopBit->currentIndex()) {
-    case 0: stopBit = QSerialPort::OneStop; break;
-    case 1: stopBit = QSerialPort::OneAndHalfStop; break;
-    case 2: stopBit = QSerialPort::TwoStop; break;
-    default: stopBit = QSerialPort::OneStop; break;
+    case 0: m_modbus.stopBit = QSerialPort::OneStop; break;
+    case 1: m_modbus.stopBit = QSerialPort::OneAndHalfStop; break;
+    case 2: m_modbus.stopBit = QSerialPort::TwoStop; break;
+    default: m_modbus.stopBit = QSerialPort::OneStop; break;
     }
 
     //ui->lineEdit_id->setPlaceholderText("You can enter up to 6 characters");
@@ -161,9 +176,11 @@ void Widget::on_pushButton_connect_clicked()
     uint8_t addrid = static_cast<uint8_t>(addrID.toUInt(nullptr, 16));   //获取读取起始地址
     id = addrid;
 
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, QSerialPort::Data8);
-    if (modbusDevice->state() != QModbusDevice::ConnectedState) {
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, QSerialPort::Data8);
+     qDebug() << "state:" << m_modbus.modbusDevice->state();
+    if (m_modbus.modbusDevice->state() != QModbusDevice::ConnectedState) {
         connectModbus();
+
         ui->pushButton_connect->setText("断开连接");
         ui->lineEdit_id->setEnabled(false);          //失能起始地址
         qDebug() << "连接成功";
@@ -178,18 +195,18 @@ void Widget::on_pushButton_connect_clicked()
 void Widget::connectModbus()
 {
     disconnnectModbus();
-    if (!modbusDevice)
+    if (!m_modbus.modbusDevice)
         return;
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialPortNameParameter,ui->comboBox_serialName->currentText());
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialParityParameter,parity);
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialBaudRateParameter,baud);
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialDataBitsParameter,dataBit);
-    modbusDevice->setConnectionParameter(QModbusDevice::SerialStopBitsParameter,stopBit);
-
-    modbusDevice->setTimeout(1000);
-    modbusDevice->setNumberOfRetries(0);
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialPortNameParameter,ui->comboBox_serialName->currentText());
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialParityParameter,m_modbus.parity);
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialBaudRateParameter,m_modbus.baud);
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialDataBitsParameter,m_modbus.dataBit);
+    m_modbus.modbusDevice->setConnectionParameter(QModbusDevice::SerialStopBitsParameter,m_modbus.stopBit);
+    qDebug() << "set: " <<m_modbus.parity << " "  << m_modbus.baud << " " << m_modbus.dataBit << " " <<  m_modbus.stopBit;
+    m_modbus.modbusDevice->setTimeout(1000);
+    m_modbus.modbusDevice->setNumberOfRetries(0);
     //连接失败
-    if(modbusDevice->connectDevice())
+    if(m_modbus.modbusDevice->connectDevice())
     {
         ui->pushButton_connect->setText("断开连接");
         qDebug() << "连接成功";
@@ -204,9 +221,10 @@ void Widget::connectModbus()
 
 void Widget::disconnnectModbus()
 {
-    if (!modbusDevice)
+    qDebug() << m_modbus.modbusDevice;
+    if (!m_modbus.modbusDevice)
         return;
-    modbusDevice->disconnectDevice();
+    m_modbus.modbusDevice->disconnectDevice();
     qDebug() << "断开连接";
 }
 
@@ -217,6 +235,7 @@ void Widget::on_pushButton_read_clicked()
     uint16_t addr = static_cast<uint16_t>(addrRead.toUInt(nullptr, 16));   //获取读取起始地址
     num = ui->lineEdit_num->text().toUInt();                               //获取读取寄存器数量
     readUnit(id, addr, num);
+
     //qDebug() << addrRead << endl;
 }
 
@@ -243,7 +262,7 @@ void Widget::on_pushButton_send_clicked()
 
 void Widget::writeUnit(int slaveId, int startAddress, QList<quint16> values)
 {
-    if (!modbusDevice)
+    if (!m_modbus.modbusDevice)
     {
         QMessageBox::information(NULL,  "Title",  "请先连接设备");
         return;
@@ -256,7 +275,7 @@ void Widget::writeUnit(int slaveId, int startAddress, QList<quint16> values)
     }
 
     //serverEdit 发生给slave的ID
-    if (auto *reply = modbusDevice->sendWriteRequest(writeUnit,slaveId)) {
+    if (auto *reply = m_modbus.modbusDevice->sendWriteRequest(writeUnit,slaveId)) {
         if (!reply->isFinished()) {
             connect(reply, &QModbusReply::finished, this, [this, reply]() {
                 if (reply->error() == QModbusDevice::ProtocolError) {
@@ -272,27 +291,26 @@ void Widget::writeUnit(int slaveId, int startAddress, QList<quint16> values)
             reply->deleteLater();
         }
     } else {
-        qDebug() << QString(("Write error: ") + modbusDevice->errorString());
+        qDebug() << QString(("Write error: ") + m_modbus.modbusDevice->errorString());
     }
 }
-
 //读取寄存器 slaveId 读取的从机ID  startAddress读取的起始地址 readNum读取的数量
 void Widget::readUnit(int slaveId, int startAddress, int readNum)
 {
-    if (!modbusDevice)
+    if (!m_modbus.modbusDevice)
     {
         QMessageBox::information(NULL,  "Title",  "请先连接设备");
         return;
     }
     connectModbus();
-    QMutexLocker lock(&m_modbusMutex);
-    if (auto *reply = modbusDevice->sendReadRequest(QModbusDataUnit(QModbusDataUnit::HoldingRegisters, startAddress, readNum), slaveId)) {
+    QMutexLocker lock(&m_modbus.m_modbusMutex);
+    if (auto *reply = m_modbus.modbusDevice->sendReadRequest(QModbusDataUnit(QModbusDataUnit::HoldingRegisters, startAddress, readNum), slaveId)) {
         if (!reply->isFinished())
             connect(reply, &QModbusReply::finished, this, &Widget::onReadReady);
         else
             delete reply;
     } else {
-        qDebug() << "Read error: " << modbusDevice->errorString();
+        qDebug() << "Read error: " << m_modbus.modbusDevice->errorString();
     }
 }
 

@@ -7,6 +7,8 @@
 #include <QMutex>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <modbusdata.h>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -20,8 +22,8 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-    void freshSerialPortCombox();           //寻找可用串口
-    void InitModbus();                      //初始化modbus
+    void freshSerialPortCombox();//widget           //寻找可用串口
+   // void InitModbus();                      //初始化modbus
     void connectModbus();                   //连接modbus
     void disconnnectModbus();               //断开modbus
 
@@ -29,6 +31,8 @@ public:
     void writeUnit(int slaveId, int startAddress, QList<quint16> values);
     //读取寄存器 slaveId 读取的从机ID  startAddress读取的起始地址 readNum读取的数量
     void readUnit(int slaveId, int startAddress, int readNum);
+signals:
+    void readUnitSIGNAL(int slaveId, int startAddress, int readNum);
 
 public slots:
     void onModbusRawData(QString data, int type);   //显示modbus数据
@@ -46,18 +50,17 @@ private slots:
 
 private:
     Ui::Widget *ui;
+    ModbusData m_modbus;
 
-    QModbusReply *lastRequest;
-    QModbusClient *modbusDevice;
+    //QModbusReply *lastRequest;
+    //QModbusClient *modbusDevice;
+    QThread m_thread;
 
-    QSerialPort  SerialPort;
-    QSerialPort::BaudRate baud;
-    QSerialPort::DataBits dataBit;
-    QSerialPort::Parity parity;
-    QSerialPort::StopBits stopBit;
-    QMutex       m_modbusMutex;
+
 
     uint num;
     int id;
 };
+
+
 #endif // WIDGET_H
